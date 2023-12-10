@@ -13,4 +13,8 @@ export class CardFormComponent {
       Validators.minLength(3)
     ])
   });
+
+  constructor(){
+    console.log(this.cardForm.controls.name);
+  }
 }
