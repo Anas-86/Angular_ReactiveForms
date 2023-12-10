@@ -1,15 +1,20 @@
-<input type="text" [formControl]="control">
-<ng-container *ngIf="control.touched && control.dirty">
-    <!-- By using the optional chaining operator, you are telling Angular to 
-    only access the required property if the errors property is not null. -->
-        <div *ngIf="control.errors?.['required']">
+<div class="field">
+    <label for="label">{{label}}</label>
+    <div class="control">
+        <input class="input" type="text" [formControl]="control" [ngClass]="{'is-danger': showErrors()}">
+    </div>
+    <ng-container *ngIf="showErrors()">
+        <!-- By using the optional chaining operator, you are telling Angular to 
+            only access the required property if the errors property is not null. -->
+        <div class="help is-danger" *ngIf="control.errors?.['required']">
             Value is required.
         </div>
-        <div *ngIf="control.errors?.['minlength']">
-            Value you entered is 
+        <div class="help is-danger" *ngIf="control.errors?.['minlength']">
+            Value you entered is
             {{control.errors?.['minlength'].actualLength}}
             characters long, but it must be at least
             {{control.errors?.['minlength'].requiredLength}}
             Characters
         </div>
     </ng-container>
+</div>
