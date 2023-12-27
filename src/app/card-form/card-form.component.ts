@@ -14,8 +14,8 @@ export class CardFormComponent {
     ]),
     cardNumber: new FormControl('',[
       Validators.required,
-      Validators.minLength(16),
-      Validators.maxLength(16)
+      Validators.minLength(20),   // card digits 16 + 4 hyphens = 20
+      Validators.maxLength(20)    // card digits 16 + 4 hyphens = 20
     ]),
     expiration: new FormControl('',[
       Validators.required,
